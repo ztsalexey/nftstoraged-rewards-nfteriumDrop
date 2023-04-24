@@ -8,9 +8,9 @@ const API_KEY = process.env.NFT_STORAGE_API_KEY
 async function storeAsset() {
     const client = new NFTStorage({ token: API_KEY })
     const metadata = await client.store({
-        name: "NFTerium Rewards",
-        description: "NFTerium Early Users Drop",
-        image: new File([await fs.promises.readFile("assets/NFTRM_drop.png")], "NFTRM_drop.png", {
+        name: "SAFECHAD105",
+        description: "TAKING CARE OF THE COMMUNITY",
+        image: new File([await fs.promises.readFile("assets/NFTRM_drop.jpg")], "NFTRM_drop.jpg", {
             type: "image/png",
         }),
     })

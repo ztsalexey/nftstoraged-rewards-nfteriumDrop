@@ -7,22 +7,16 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "./ERC721A.sol";
 
-
 contract NFTRMdrop is ERC721A, Ownable {
+    constructor() ERC721A("SAFECHADDROP", "SAFECHAD105") {
+        _safeMint(0x968a547217A2027903b3e45a4AC824E3033f8366, 100);
+    }
 
-   constructor() ERC721A("NFTRMdrop", "NFTRMdrop") {
+    function mintNFTtoLottery() external onlyOwner {
+        _safeMint(0x968a547217A2027903b3e45a4AC824E3033f8366, 100); //Only works with ERC721 reciever/holder in the case with smart contracts
+    }
 
-    _safeMint(msg.sender, 10);
-
-   }
-
-   function mintNFTtoLottery()
-       external onlyOwner
-   {
-       _safeMint(0xD2a2F9e753F5ab137A60906Ad40C89b947562Ce6, 10); //Only works with ERC721 reciever/holder in the case with smart contracts
-   }
-
-   function tokenURI(uint256 tokenId) public view override returns (string memory) {
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
         if (!_exists(tokenId)) _revert(URIQueryForNonexistentToken.selector);
 
         string memory baseURI = _baseURI();
@@ -30,6 +24,6 @@ contract NFTRMdrop is ERC721A, Ownable {
     }
 
     function _baseURI() internal pure override returns (string memory) {
-        return "ipfs://bafyreiasvow4x3zftfl4o3bytenjpoof425hvbknhvz3yfuzk7idtyqkoa/metadata.json";
+        return "ipfs://bafyreifobt33nxwz5cj4eqgwit6omqgcxc5lpoicpkzvo7sgwtpb6xpzz4/metadata.json";
     }
 }
